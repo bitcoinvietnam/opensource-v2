@@ -1830,17 +1830,79 @@ strong {
   }
 
   .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-output {
     font-size: 0.95rem;
+    line-height: 1.7;
   }
 
   .stats-bar {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     flex-direction: column;
     gap: var(--space-sm);
   }
 
   .stat-divider {
     display: none;
+  }
+
+  /* Card readability */
+  .project-description {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .project-link {
+    font-size: 0.78rem;
+  }
+
+  .project-type-badge {
+    font-size: 0.7rem;
+  }
+
+  /* Post/article readability */
+  .post-content {
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
+
+  .post-date,
+  .post-meta {
+    font-size: 0.9rem;
+  }
+
+  .post-category {
+    font-size: 0.75rem;
+  }
+
+  /* Mission readability */
+  .mission-text {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .mission-cta-link {
+    font-size: 1rem;
+  }
+
+  /* Nav mobile readability */
+  .nav-mobile a {
+    font-size: 0.95rem;
+  }
+
+  /* Footer readability */
+  .footer-tagline {
+    font-size: 0.85rem;
+  }
+
+  .footer-nav a {
+    font-size: 0.85rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
   }
 }
 
