@@ -1,0 +1,13 @@
+{
+  "name": "bitcoinvn-opensource",
+  "version": "2.0.0",
+  "description": "BitcoinVN Open Source Projects and Contributions",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "NODE_ENV=production npx @11ty/eleventy",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

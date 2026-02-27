@@ -1,0 +1,111 @@
+---
+layout: base.njk
+---
+
+{# Hero Section - Terminal Window #}
+<section class="hero">
+  <div class="container">
+    <div class="hero-terminal">
+      <div class="terminal-content">
+        <div class="hero-ascii-row">
+          <pre class="hero-ascii hero-ascii--logo" aria-label="BitcoinVN Star">                    +%%%.
+                    %<span class="sw">@@@</span>%.             :+
+                   :<span class="sw">@@@@@</span>%.          :##
+                   *<span class="sw">@@</span>#*<span class="sw">@@</span>%.       :#%#.
+                   %<span class="sw">@@</span>+ *<span class="sw">@@</span>%.   .*%%%#.
+                  :<span class="sw">@@@</span>.  *<span class="sw">@@</span>%+*%%%%%#.
+                  #<span class="sw">@@</span>#  .+%%%%%%%%%%###%%%<span class="sw">@@@</span>:
+.+*++::::....::::+%<span class="sw">@@</span>%#%%%%%%%%%%%%<span class="sw">@</span>%%##*%<span class="sw">@@@</span>+
+  :#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#.    +%<span class="sw">@@</span>#.
+    .*%%%%%%%%%%%%%%%%%%%%%%%%%%*    :%<span class="sw">@@</span>#.
+       +#%%%%%%%%%%%%%%%%%%%%%%:   +%<span class="sw">@@</span>#:
+         :#%%%%%%%%%%%%%%%%%%#.  :%<span class="sw">@@</span>%:
+           .*%%%%%%%%%%%%%%%+  :%<span class="sw">@@@</span>+
+              +#%%%%%%%%%%*    .%<span class="sw">@@@</span>#
+               *%%%%%%%%*.      :<span class="sw">@@@@</span>#
+              +%%%%%%%#:  ::+:.  :<span class="sw">@@@@</span>#
+             :%%%%%%#:    :#<span class="sw">@@@</span>%*:*<span class="sw">@@@@</span>*
+            .%%%%%#+         :*%<span class="sw">@@@@@@@@</span>*
+           .#%%%%+              .+%<span class="sw">@@@@@@</span>*
+           #%%%+                   .+##*++
+          *%%+
+         +%*
+        :+.</pre>
+          <pre class="hero-ascii hero-ascii--text" aria-label="BitcoinVN">
+ ____  _ _            _    __     ___   _
+| __ )(_) |_ ___ ___ (_)_ _\ \   / / \ | |
+|  _ \| | __/ __/ _ \| | '_ \ \ / /|  \| |
+| |_) | | || (_| (_) | | | | \ V / | |\  |
+|____/|_|\__\___\___/|_|_| |_|\_/  |_| \_|</pre>
+        </div>
+        <p class="hero-subtitle">
+          <span class="text-green">$</span> <span class="typewriter" data-text="echo &quot;Open Source Contributions&quot;"></span><span class="cursor"></span>
+        </p>
+        <p class="hero-output">
+          Vietnam's premier Bitcoin exchange, supporting the open source ecosystem since 2014.
+        </p>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <span class="stat-item"><span class="stat-value count-up" data-target="4">0</span> projects</span>
+      <span class="stat-divider">&middot;</span>
+      <span class="stat-item"><span class="stat-value count-up" data-target="3">0</span> translations</span>
+      <span class="stat-divider">&middot;</span>
+      <span class="stat-item"><span class="stat-value count-up" data-target="2">0</span> sponsorships</span>
+      <span class="stat-divider">&middot;</span>
+      <span class="stat-item">since <span class="stat-value count-up" data-target="2014">2014</span></span>
+    </div>
+
+    <div class="hero-cta-hint">
+      <span class="hint-desktop">Press <kbd>Enter</kbd> to scroll down or <kbd>J</kbd> / <kbd>K</kbd> to navigate</span>
+      <span class="hint-mobile">Scroll down <span class="hint-arrow">&darr;</span></span>
+    </div>
+  </div>
+</section>
+
+{# Contributions Grid #}
+<section class="section" id="contributions">
+  <div class="container">
+    <h2 class="section-heading"><span class="text-green">$</span> <span class="typewriter" data-text="ls ./contributions"></span><span class="cursor"></span></h2>
+    <div class="card-grid">
+      {% for project in contributions %}
+        {% include "contribution-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# Mission Section #}
+<section class="section" id="mission">
+  <div class="container">
+    <h2 class="section-heading"><span class="text-green">$</span> <span class="typewriter" data-text="cat mission.txt"></span><span class="cursor"></span></h2>
+
+    <div class="mission-layout">
+      <pre class="mission-ascii" aria-hidden="true">
+<span class="ma-box">+-------------------------+</span>
+<span class="ma-box">|</span>  <span class="ma-gold">₿</span> <span class="ma-label">Bitcoin Business</span>   <span class="ma-box">|</span>
+<span class="ma-box">+-----------+-------------+</span>
+<span class="ma-arrow">            |</span>
+<span class="ma-arrow">            v</span>
+<span class="ma-box">+-------------------------+</span>
+<span class="ma-box">|</span>   <span class="ma-green">Open Source Fund</span>      <span class="ma-box">|</span>
+<span class="ma-box">+----+--------+--------+--+</span>
+<span class="ma-arrow">     |        |        |</span>
+<span class="ma-arrow">     v        v        v</span>
+<span class="ma-box"> +------+  +-----+  +-----------+</span>
+<span class="ma-box"> |</span> <span class="ma-label">i18n</span> <span class="ma-box">|  |</span> <span class="ma-label">dev</span> <span class="ma-box">|  |</span> <span class="ma-label">community</span> <span class="ma-box">|</span>
+<span class="ma-box"> +------+  +-----+  +-----------+</span></pre>
+
+      <div class="mission-text">
+        <p>Every profitable Bitcoin business should strive to allocate a certain part of their resources to support Open Source development.</p>
+        <p>While as a Vietnam-based firm we are limited in the financial resources we can provide, our team has been mostly active especially in providing free localization to selected projects.</p>
+        <div class="mission-cta">
+          <a href="{{ '/about/' | url }}" class="mission-cta-link">
+            <span class="text-muted">~$</span> open about
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

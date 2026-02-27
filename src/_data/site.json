@@ -1,0 +1,22 @@
+{
+  "title": "BitcoinVN Open Source",
+  "subtitle": "Projects and Contributions",
+  "description": "BitcoinVN open source projects and contributions.",
+  "url": "https://bitcoinvn.io",
+  "baseurl": "/opensource",
+  "author": {
+    "name": "BitcoinVN",
+    "bio": "A bridge between the fiat world and cryptocurrency.",
+    "location": "Vietnam",
+    "avatar": "/assets/images/bvn-logo.jpg"
+  },
+  "social": {
+    "twitter": "https://twitter.com/Bitcoin_Vietnam",
+    "github": "https://github.com/bitcoinvietnam",
+    "website": "https://bitcoinvn.io",
+    "telegram": "https://t.me/bitcoinvn_community",
+    "facebook": "https://www.facebook.com/www.bitcoinvn.io",
+    "linkedin": "https://www.linkedin.com/company/bitcoin-vietnam",
+    "tiktok": "https://www.tiktok.com/@bitcoinvn.io"
+  }
+}

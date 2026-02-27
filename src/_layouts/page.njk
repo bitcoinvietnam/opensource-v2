@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+
+<div class="container">
+  <article class="page">
+    <header class="page-header">
+      <h1 class="page-title"><span class="text-green">&gt;</span> <span class="typewriter" data-text="{{ title }}"></span><span class="cursor"></span></h1>
+    </header>
+
+    <div class="page-content">
+      {{ content | safe }}
+    </div>
+  </article>
+</div>

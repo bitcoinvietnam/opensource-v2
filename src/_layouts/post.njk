@@ -1,0 +1,39 @@
+---
+layout: base.njk
+---
+
+<div class="container">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><span class="text-green">&gt;</span> <span class="typewriter" data-text="{{ title }}"></span><span class="cursor"></span></h1>
+      <div class="post-meta">
+        {% if date %}
+          <span class="post-date">{{ date | dateDisplay }}</span>
+        {% endif %}
+        {% if categories %}
+          <div class="post-categories">
+            {% for cat in categories %}
+              <span class="post-category">{{ cat }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+    </header>
+
+    <div class="post-body{% if thumbnail %} post-body--has-thumb{% endif %}">
+      <div class="post-content">
+        {{ content | safe }}
+      </div>
+      {% if thumbnail %}
+        <aside class="post-thumbnail">
+          <img src="{{ thumbnail | url }}" alt="{{ title }}" class="post-thumbnail-img pixel-art">
+        </aside>
+      {% endif %}
+    </div>
+
+    <nav class="post-nav">
+      <a href="{{ '/#contributions' | url }}" class="post-back-link">&lt; BACK TO CONTRIBUTIONS</a>
+    </nav>
+  </article>
+</div>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@bitcoin_vietnam">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ '/favicon.ico' | url }}">
+
+  <!-- Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | url }}">
+</head>
+<body>
+  <div class="site-wrapper">
+    {% include "header.njk" %}
+
+    <main class="site-content">
+      {{ content | safe }}
+    </main>
+
+    {% include "footer.njk" %}
+  </div>
+
+  <script>
+    (function() {
+      // Mobile nav toggle
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.querySelector('.nav-mobile');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          menu.classList.toggle('is-open');
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', !expanded);
+        });
+      }
+
+      // Header scroll effect
+      var header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 20) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      }
+
+      // Typewriter effect (triggers on scroll into view)
+      var typewriters = document.querySelectorAll('.typewriter');
+      if (typewriters.length) {
+        var twObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var text = el.getAttribute('data-text');
+              var i = 0;
+              function type() {
+                if (i < text.length) {
+                  el.textContent += text.charAt(i);
+                  i++;
+                  setTimeout(type, 50);
+                }
+              }
+              setTimeout(type, 300);
+              twObserver.unobserve(el);
+            }
+          });
+        }, { threshold: 0.5 });
+        typewriters.forEach(function(el) { twObserver.observe(el); });
+      }
+
+      // Count-up animation
+      var countEls = document.querySelectorAll('.count-up');
+      if (countEls.length) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var target = parseInt(el.getAttribute('data-target'), 10);
+              var duration = target > 100 ? 1500 : 800;
+              var start = target > 100 ? target - 20 : 0;
+              var startTime = null;
+              function animate(ts) {
+                if (!startTime) startTime = ts;
+                var progress = Math.min((ts - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(start + (target - start) * eased);
+                if (progress < 1) {
+                  requestAnimationFrame(animate);
+                } else {
+                  el.textContent = target;
+                }
+              }
+              requestAnimationFrame(animate);
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.5 });
+        countEls.forEach(function(el) { observer.observe(el); });
+      }
+
+      // Scroll-reveal for cards and mission content
+      var revealEls = document.querySelectorAll('.project-card, .mission-ascii, .mission-text, .mission-cta');
+      if (revealEls.length) {
+        revealEls.forEach(function(el) { el.classList.add('reveal'); });
+        var revealObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        revealEls.forEach(function(el, i) {
+          el.style.transitionDelay = (i % 4) * 0.1 + 's';
+          revealObserver.observe(el);
+        });
+      }
+
+      // Nav highlight helper
+      var navLinks = document.querySelectorAll('.nav-links a');
+      var activeNavIndex = 0;
+      // Detect initial active nav from current page
+      navLinks.forEach(function(a, i) { if (a.classList.contains('active')) activeNavIndex = i; });
+      function highlightNav(index) {
+        navLinks.forEach(function(a) { a.classList.remove('active'); });
+        if (navLinks[index]) { navLinks[index].classList.add('active'); activeNavIndex = index; }
+      }
+      function isExternalLink(index) {
+        return navLinks[index] && navLinks[index].hasAttribute('target');
+      }
+      function activateNav(index) {
+        highlightNav(index);
+        if (!isExternalLink(index)) navLinks[index].click();
+      }
+
+      // Scroll spy - highlight nav based on scroll position
+      var contributionsEl = document.getElementById('contributions');
+      var missionEl = document.getElementById('mission');
+      if (contributionsEl || missionEl) {
+        window.addEventListener('scroll', function() {
+          var threshold = window.innerHeight * 0.5;
+          if (missionEl && missionEl.getBoundingClientRect().top < threshold) {
+            highlightNav(2);
+          } else if (contributionsEl && contributionsEl.getBoundingClientRect().top < threshold) {
+            highlightNav(1);
+          } else {
+            highlightNav(0);
+          }
+        }, { passive: true });
+      }
+
+      // Keyboard navigation (Enter, J, K) - desktop only
+      var scrollStep = Math.round(window.innerHeight * 0.6);
+      var sections = document.querySelectorAll('section, .site-footer');
+      document.addEventListener('keydown', function(e) {
+        var tag = e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target.isContentEditable) return;
+
+        if ((e.key === 'Enter' || e.key === ' ') && isExternalLink(activeNavIndex)) {
+          // Open external link (GitHub) when highlighted and Enter/Space pressed
+          e.preventDefault();
+          window.open(navLinks[activeNavIndex].href, '_blank');
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          var scrollTop = window.scrollY + 80;
+          for (var i = 0; i < sections.length; i++) {
+            var sectionTop = sections[i].getBoundingClientRect().top + window.scrollY;
+            if (sectionTop > scrollTop + 10) {
+              sections[i].scrollIntoView({ behavior: 'smooth' });
+              break;
+            }
+          }
+        } else if (e.key === 'ArrowRight' && window.innerWidth >= 768) {
+          e.preventDefault();
+          var next = (activeNavIndex + 1) % navLinks.length;
+          activateNav(next);
+        } else if (e.key === 'ArrowLeft' && window.innerWidth >= 768) {
+          e.preventDefault();
+          var prev = (activeNavIndex - 1 + navLinks.length) % navLinks.length;
+          activateNav(prev);
+        } else if (e.key === 'j') {
+          e.preventDefault();
+          window.scrollBy({ top: scrollStep, behavior: 'smooth' });
+        } else if (e.key === 'k') {
+          e.preventDefault();
+          window.scrollBy({ top: -scrollStep, behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

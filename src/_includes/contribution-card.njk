@@ -1,0 +1,23 @@
+<div class="project-card">
+  <div class="project-header">
+    <span class="project-index">{{ loop.index0 }}</span>
+    <span class="project-name">{{ project.title | lower | replace(" ", "-") }}</span>
+    <span class="project-badge project-badge--{{ project.type }}">{{ project.contribution }}</span>
+  </div>
+  <a href="{{ project.url | url }}" class="project-body">
+    <h3 class="project-title">{{ project.title }}</h3>
+    <p class="project-desc">{{ project.description }}</p>
+  </a>
+  <div class="project-footer">
+    {% if project.homepage %}
+      <a href="{{ project.homepage }}" class="project-link" target="_blank" rel="noopener">
+        <span class="text-muted">~$</span> open {{ project.homepage | replace("https://", "") }}
+      </a>
+    {% endif %}
+    {% if project.github %}
+      <a href="{{ project.github }}" class="project-link" target="_blank" rel="noopener">
+        <span class="text-muted">~$</span> git clone {{ project.github | replace("https://github.com/", "") }}
+      </a>
+    {% endif %}
+  </div>
+</div>

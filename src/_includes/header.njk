@@ -1,0 +1,47 @@
+<header class="site-header">
+  <div class="header-bar">
+    <div class="header-left">
+      <span class="terminal-dot terminal-dot--red"></span>
+      <span class="terminal-dot terminal-dot--yellow"></span>
+      <span class="terminal-dot terminal-dot--green"></span>
+      <a href="{{ '/' | url }}" class="site-logo">
+        <span class="logo-tilde">~</span>
+        <span class="logo-text"><span class="text-gold">bitcoinvn</span>@opensource</span>
+      </a>
+    </div>
+
+    <nav class="header-right">
+      <ul class="nav-links">
+        <li>
+          <a href="{{ '/' | url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+        </li>
+        <li>
+          <a href="{{ '/#contributions' | url }}"{% if page.url == '/#contributions' %} class="active"{% endif %}>Contributions</a>
+        </li>
+        <li>
+          <a href="{{ '/#mission' | url }}">Mission</a>
+        </li>
+        <li>
+          <a href="{{ '/about/' | url }}"{% if page.url == '/about/' %} class="active"{% endif %}>About</a>
+        </li>
+        <li>
+          <a href="{{ site.social.github }}" target="_blank" rel="noopener">GitHub</a>
+        </li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        &#9776;
+      </button>
+    </nav>
+  </div>
+
+  <div class="nav-mobile">
+    <ul>
+      <li><a href="{{ '/' | url }}">Home</a></li>
+      <li><a href="{{ '/#contributions' | url }}">Contributions</a></li>
+      <li><a href="{{ '/#mission' | url }}">Mission</a></li>
+      <li><a href="{{ '/about/' | url }}">About</a></li>
+      <li><a href="{{ site.social.github }}" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</header>

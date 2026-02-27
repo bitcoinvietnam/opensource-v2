@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Base58",
+    "description": "A software engineering school built on the bitcoin standard. The team led by Lisa Neigut (aka \"niftynei\") offers online & in-person classes.",
+    "contribution": "Event Sponsorship",
+    "type": "sponsor",
+    "image": "/assets/images/base58.webp",
+    "url": "/base58-info/",
+    "homepage": "https://base58.info/",
+    "github": ""
+  },
+  {
+    "title": "Mempool Bitcoin Explorer",
+    "description": "A mempool and blockchain explorer for the Bitcoin community, focusing on the transaction fee market and multi-layer ecosystem, completely self-hosted.",
+    "contribution": "Translation & Sponsorship",
+    "type": "translation",
+    "image": "/assets/images/mempool-logo.jpg",
+    "url": "/mempool-space/",
+    "homepage": "https://mempool.space",
+    "github": "https://github.com/mempool/mempool"
+  },
+  {
+    "title": "Blixt Wallet",
+    "description": "A self-custodial open-source Bitcoin Lightning Wallet for Android with focus on usability and user experience, powered by lnd and Neutrino SPV.",
+    "contribution": "Translation",
+    "type": "translation",
+    "image": "/assets/images/blixt-wallet-logo.jpg",
+    "url": "/blixt-wallet/",
+    "homepage": "https://blixtwallet.github.io",
+    "github": "https://github.com/hsjoberg/blixt-wallet"
+  },
+  {
+    "title": "Zeus Lightning App",
+    "description": "An open-source, non-custodial Bitcoin wallet that gives you full control over how you make payments. Make lightning fast payments in the palm of your hand.",
+    "contribution": "Translation",
+    "type": "translation",
+    "image": "/assets/images/zeus-app-logo.jpg",
+    "url": "/zeus-lightning-app/",
+    "homepage": "https://zeusln.app",
+    "github": "https://github.com/ZeusLN/zeus"
+  }
+]

@@ -1,0 +1,6 @@
+_site
+node_modules
+.cache
+/.vscode
+/.claude
+package-lock.json
