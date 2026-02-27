@@ -1066,6 +1066,29 @@ strong {
   text-decoration: none;
 }
 
+.project-logo-wrap {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    rgba(18, 28, 40, 0.5);
+  padding: 8px 12px;
+  margin-bottom: var(--space-md);
+}
+
+.project-logo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: saturate(1.05) contrast(1.02);
+}
+
 .project-title {
   font-family: var(--font-mono);
   font-size: 1.1rem;
