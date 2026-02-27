@@ -3,7 +3,7 @@
   "subtitle": "Projects and Contributions",
   "description": "BitcoinVN open source projects and contributions.",
   "url": "https://bitcoinvn.io",
-  "baseurl": "/opensource",
+  "baseurl": "/opensource-v2",
   "author": {
     "name": "BitcoinVN",
     "bio": "A bridge between the fiat world and cryptocurrency.",
