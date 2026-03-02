@@ -93,25 +93,6 @@ hr {
   margin: var(--space-xl) 0;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: var(--space-sm) var(--space-md);
-  text-align: left;
-  border: 1px solid var(--border-color);
-}
-
-th {
-  background-color: var(--bg-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--accent-gold);
-}
-
-
 /* ============================================================
    Base Elements
    ============================================================ */
@@ -170,15 +151,6 @@ pre code {
   font-size: inherit;
   color: inherit;
 }
-
-blockquote {
-  border-left: 3px solid var(--accent-gold);
-  padding-left: var(--space-lg);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-lg);
-  font-style: italic;
-}
-
 
 /* ============================================================
    Typography
@@ -638,6 +610,7 @@ strong {
   border-radius: 50%;
   animation: orbFloat1 12s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .hero::after {
@@ -651,25 +624,20 @@ strong {
   border-radius: 50%;
   animation: orbFloat2 15s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
-/* Multi-layer background: scanlines + orbs */
+/* Multi-layer background: scanlines + orb */
 .hero {
   background:
-    /* CRT scanlines */
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.15) 2px,
-      rgba(0, 0, 0, 0.15) 4px
+      transparent 3px,
+      rgba(0, 0, 0, 0.1) 3px,
+      rgba(0, 0, 0, 0.1) 4px
     ),
-    /* Purple orb top-right */
-    radial-gradient(ellipse 50% 50% at 75% 15%, rgba(167, 139, 250, 0.12) 0%, transparent 60%),
-    /* Gold glow center-bottom */
-    radial-gradient(ellipse 60% 50% at 50% 60%, rgba(240, 180, 41, 0.08) 0%, transparent 70%),
-    /* Deep blue accent */
-    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 50% at 75% 15%, rgba(167, 139, 250, 0.1) 0%, transparent 60%);
 }
 
 /* Grid overlay on container */
@@ -688,6 +656,7 @@ strong {
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 5%, transparent 55%);
   pointer-events: none;
   z-index: -1;
+  will-change: opacity;
   animation: gridPulse 6s ease-in-out infinite alternate;
 }
 
@@ -700,26 +669,14 @@ strong {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(2px 2px at 8% 12%, rgba(241, 196, 15, 0.8) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 22% 68%, rgba(52, 211, 153, 0.7) 50%, transparent 50%),
-    radial-gradient(2px 2px at 38% 28%, rgba(209, 213, 219, 0.5) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 52% 82%, rgba(241, 196, 15, 0.6) 50%, transparent 50%),
-    radial-gradient(2px 2px at 68% 8%, rgba(167, 139, 250, 0.7) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 82% 52%, rgba(52, 211, 153, 0.6) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 12% 42%, rgba(209, 213, 219, 0.4) 50%, transparent 50%),
-    radial-gradient(2.5px 2.5px at 58% 48%, rgba(240, 180, 41, 0.7) 50%, transparent 50%),
-    radial-gradient(2px 2px at 30% 88%, rgba(167, 139, 250, 0.6) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 88% 32%, rgba(209, 213, 219, 0.5) 50%, transparent 50%),
-    radial-gradient(2.5px 2.5px at 3% 82%, rgba(52, 211, 153, 0.8) 50%, transparent 50%),
-    radial-gradient(2px 2px at 75% 62%, rgba(240, 180, 41, 0.5) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 42% 3%, rgba(209, 213, 219, 0.6) 50%, transparent 50%),
-    radial-gradient(2px 2px at 18% 22%, rgba(167, 139, 250, 0.5) 50%, transparent 50%),
-    radial-gradient(2.5px 2.5px at 92% 88%, rgba(241, 196, 15, 0.7) 50%, transparent 50%),
-    radial-gradient(2px 2px at 48% 55%, rgba(52, 211, 153, 0.5) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 65% 38%, rgba(59, 130, 246, 0.5) 50%, transparent 50%),
-    radial-gradient(2px 2px at 35% 72%, rgba(240, 180, 41, 0.6) 50%, transparent 50%),
-    radial-gradient(2px 2px at 95% 15%, rgba(52, 211, 153, 0.6) 50%, transparent 50%),
-    radial-gradient(1.5px 1.5px at 5% 55%, rgba(167, 139, 250, 0.7) 50%, transparent 50%);
+    radial-gradient(2px 2px at 10% 15%, rgba(241, 196, 15, 0.7) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 25% 70%, rgba(52, 211, 153, 0.6) 50%, transparent 50%),
+    radial-gradient(2px 2px at 45% 25%, rgba(209, 213, 219, 0.5) 50%, transparent 50%),
+    radial-gradient(2px 2px at 70% 10%, rgba(167, 139, 250, 0.6) 50%, transparent 50%),
+    radial-gradient(2.5px 2.5px at 58% 50%, rgba(240, 180, 41, 0.7) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 85% 55%, rgba(52, 211, 153, 0.6) 50%, transparent 50%),
+    radial-gradient(2px 2px at 30% 85%, rgba(167, 139, 250, 0.5) 50%, transparent 50%),
+    radial-gradient(2px 2px at 92% 85%, rgba(241, 196, 15, 0.6) 50%, transparent 50%);
   pointer-events: none;
   z-index: -1;
   animation: starTwinkle 4s ease-in-out infinite alternate;
@@ -775,27 +732,24 @@ strong {
 .hero-ascii--logo {
   font-size: 0.22rem;
   color: #fbd659;
-  opacity: 1;
   text-shadow:
     0 0 8px rgba(251, 214, 89, 0.6),
-    0 0 20px rgba(251, 214, 89, 0.3),
-    0 0 40px rgba(240, 180, 41, 0.15);
+    0 0 25px rgba(251, 214, 89, 0.25);
+  will-change: text-shadow;
   animation: fadeInUp 0.8s ease-out, asciiGlow 4s ease-in-out 1.5s infinite alternate;
 }
 
 .hero-ascii--logo .sw {
   color: #ffffff;
-  text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.5),
-    0 0 15px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .hero-ascii--text {
   margin: 0;
   text-shadow:
     0 0 6px rgba(251, 214, 89, 0.5),
-    0 0 16px rgba(251, 214, 89, 0.2),
-    0 0 35px rgba(240, 180, 41, 0.1);
+    0 0 18px rgba(251, 214, 89, 0.2);
+  will-change: text-shadow;
   animation: fadeInUp 0.8s ease-out 0.2s both, textGlow 3s ease-in-out 2s infinite alternate;
 }
 
@@ -1115,54 +1069,6 @@ strong {
 .project-link:hover {
   color: var(--text-heading);
   text-decoration: none;
-}
-
-
-/* ============================================================
-   Buttons
-   ============================================================ */
-.btn {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.5rem 1.25rem;
-  border: 1px solid var(--accent-gold);
-  border-radius: var(--radius-sm);
-  background-color: transparent;
-  color: var(--accent-gold);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn:visited {
-  color: var(--accent-gold);
-}
-
-.btn:hover {
-  background-color: var(--accent-gold);
-  color: var(--bg-primary);
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(240, 180, 41, 0.2);
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-.btn--primary {
-  background-color: var(--accent-gold);
-  color: var(--bg-primary);
-}
-
-.btn--primary:visited {
-  color: var(--bg-primary);
-}
-
-.btn--primary:hover {
-  background-color: var(--accent-gold-hover);
-  color: var(--bg-primary);
 }
 
 
@@ -1738,24 +1644,12 @@ strong {
   0% {
     text-shadow:
       0 0 8px rgba(251, 214, 89, 0.5),
-      0 0 20px rgba(251, 214, 89, 0.2),
-      0 0 40px rgba(240, 180, 41, 0.1);
-    filter: brightness(1);
-  }
-  50% {
-    text-shadow:
-      0 0 12px rgba(251, 214, 89, 0.8),
-      0 0 30px rgba(251, 214, 89, 0.4),
-      0 0 60px rgba(240, 180, 41, 0.2),
-      0 0 80px rgba(240, 180, 41, 0.1);
-    filter: brightness(1.15);
+      0 0 25px rgba(251, 214, 89, 0.2);
   }
   100% {
     text-shadow:
-      0 0 10px rgba(251, 214, 89, 0.6),
-      0 0 25px rgba(251, 214, 89, 0.3),
-      0 0 50px rgba(240, 180, 41, 0.15);
-    filter: brightness(1.05);
+      0 0 14px rgba(251, 214, 89, 0.8),
+      0 0 35px rgba(251, 214, 89, 0.35);
   }
 }
 
@@ -1763,22 +1657,12 @@ strong {
   0% {
     text-shadow:
       0 0 5px rgba(251, 214, 89, 0.4),
-      0 0 14px rgba(251, 214, 89, 0.15);
-    filter: brightness(1);
-  }
-  50% {
-    text-shadow:
-      0 0 10px rgba(251, 214, 89, 0.7),
-      0 0 25px rgba(251, 214, 89, 0.35),
-      0 0 50px rgba(240, 180, 41, 0.15);
-    filter: brightness(1.2);
+      0 0 16px rgba(251, 214, 89, 0.15);
   }
   100% {
     text-shadow:
-      0 0 7px rgba(251, 214, 89, 0.5),
-      0 0 18px rgba(251, 214, 89, 0.2),
-      0 0 35px rgba(240, 180, 41, 0.1);
-    filter: brightness(1.08);
+      0 0 10px rgba(251, 214, 89, 0.7),
+      0 0 25px rgba(251, 214, 89, 0.3);
   }
 }
 
@@ -1789,25 +1673,7 @@ strong {
 .text-gold { color: var(--accent-gold); }
 .text-green { color: var(--terminal-green); }
 .text-muted { color: var(--text-secondary); }
-.text-white { color: var(--text-heading); }
 .text-center { text-align: center; }
-.mt-0 { margin-top: 0; }
-.mt-1 { margin-top: var(--space-md); }
-.mt-2 { margin-top: var(--space-xl); }
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: var(--space-md); }
-.mb-2 { margin-bottom: var(--space-xl); }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
 
 
 /* ============================================================
@@ -1925,5 +1791,31 @@ strong {
   a {
     color: #000;
     text-decoration: underline;
+  }
+}
+
+/* Reduce animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Disable heavy hero effects on small screens for performance */
+@media (max-width: 479px) {
+  .hero::before,
+  .hero::after {
+    animation: none;
+  }
+  .hero > .container::before,
+  .hero > .container::after {
+    display: none;
+  }
+  .hero-ascii--logo,
+  .hero-ascii--text {
+    animation: fadeInUp 0.8s ease-out;
+    text-shadow: 0 0 8px rgba(251, 214, 89, 0.5);
   }
 }

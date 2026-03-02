@@ -54,17 +54,8 @@
         });
       }
 
-      // Header scroll effect
+      // Header ref for scroll handler (merged below)
       var header = document.querySelector('.site-header');
-      if (header) {
-        window.addEventListener('scroll', function() {
-          if (window.scrollY > 20) {
-            header.classList.add('is-scrolled');
-          } else {
-            header.classList.remove('is-scrolled');
-          }
-        }, { passive: true });
-      }
 
       // Typewriter effect (triggers on scroll into view)
       var typewriters = document.querySelectorAll('.typewriter');
@@ -155,21 +146,37 @@
         if (!isExternalLink(index)) navLinks[index].click();
       }
 
-      // Scroll spy - highlight nav based on scroll position
+      // Merged scroll handler (header + scroll spy) — RAF-throttled
       var contributionsEl = document.getElementById('contributions');
       var missionEl = document.getElementById('mission');
-      if (contributionsEl || missionEl) {
-        window.addEventListener('scroll', function() {
-          var threshold = window.innerHeight * 0.5;
-          if (missionEl && missionEl.getBoundingClientRect().top < threshold) {
-            highlightNav(2);
-          } else if (contributionsEl && contributionsEl.getBoundingClientRect().top < threshold) {
-            highlightNav(1);
-          } else {
-            highlightNav(0);
-          }
-        }, { passive: true });
-      }
+      var scrollTicking = false;
+      window.addEventListener('scroll', function() {
+        if (!scrollTicking) {
+          scrollTicking = true;
+          requestAnimationFrame(function() {
+            // Header effect
+            if (header) {
+              if (window.scrollY > 20) {
+                header.classList.add('is-scrolled');
+              } else {
+                header.classList.remove('is-scrolled');
+              }
+            }
+            // Scroll spy
+            if (contributionsEl || missionEl) {
+              var threshold = window.innerHeight * 0.5;
+              if (missionEl && missionEl.getBoundingClientRect().top < threshold) {
+                highlightNav(2);
+              } else if (contributionsEl && contributionsEl.getBoundingClientRect().top < threshold) {
+                highlightNav(1);
+              } else {
+                highlightNav(0);
+              }
+            }
+            scrollTicking = false;
+          });
+        }
+      }, { passive: true });
 
       // Keyboard navigation (Enter, J, K) - desktop only
       var scrollStep = Math.round(window.innerHeight * 0.6);
