@@ -6,7 +6,9 @@
   </div>
   <a href="{{ project.url | url }}" class="project-body">
     {% if project.image %}
-      <img src="{{ project.image | url }}" alt="{{ project.title }}" class="project-logo">
+      <span class="project-logo-wrap">
+        <img src="{{ project.image | url }}" alt="{{ project.title }}" class="project-logo">
+      </span>
     {% endif %}
     <div>
       <h3 class="project-title">{{ project.title }}</h3>
