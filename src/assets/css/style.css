@@ -1004,7 +1004,9 @@ strong {
 
 /* Body - clickable link, hover effect only on title */
 .project-body {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
   flex: 1;
   text-decoration: none;
@@ -1018,6 +1020,15 @@ strong {
 
 .project-body:hover {
   text-decoration: none;
+}
+
+.project-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
 }
 
 .project-title {
