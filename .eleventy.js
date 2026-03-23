@@ -36,6 +36,6 @@ module.exports = function(eleventyConfig) {
     templateFormats: ["njk", "md", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    pathPrefix: "/opensource-v2/"
+    pathPrefix: "/opensource/"
   };
 };
