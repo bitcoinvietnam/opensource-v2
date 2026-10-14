@@ -962,6 +962,7 @@ strong {
 /* Header bar - like a tab/file bar */
 .project-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-sm);
   padding: 8px 14px;

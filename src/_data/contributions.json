@@ -1,5 +1,15 @@
 [
   {
+    "title": "Bitcoin House Bali",
+    "description": "BitcoinVN supported Bitcoin House Bali with a one-off contribution of 210,000 sats in October 2026.",
+    "contribution": "Community Sponsorship",
+    "type": "sponsor",
+    "image": "/assets/images/bitcoin-house-bali.webp",
+    "url": "/bitcoin-house-bali/",
+    "homepage": "https://bitcoinindonesia.xyz/bitcoin-house-bali/",
+    "github": ""
+  },
+  {
     "title": "Base58",
     "description": "A software engineering school built on the bitcoin standard. The team led by Lisa Neigut (aka \"niftynei\") offers online & in-person classes.",
     "contribution": "Event Sponsorship",
